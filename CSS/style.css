@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #add8e6;
+    min-height: 100%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+header {
+    background-color: #fadadd;
+    box-shadow: 5px 5px 10px 0px #85888c;
+    position: sticky;
+    width: 100%;
+}
+
+h1 {
+    display: inline-block;
+    color: #36383f;
+    font-size: 1.5rem;
+    margin: 0.5rem 0 0.5rem 0.5rem;
+}
+
+nav {
+    /* width: 25%; */
+    height: calc(100vh - 44px);
+    position: fixed;
+    background-color: #303545;
+    overflow: hidden;
+    max-width: 0;
+    transition: max-width, 0.8s ease 0s;
+    border-radius: 0 20px 20px 0;
+}
+
+.service-title {
+color:#faf9f6;
+font-size: 0.8rem;
+padding: 0.7rem;
+}
+
+.service-contact {
+color: #faf9f6;
+padding: 0.2rem 0.4rem 0.7rem 0.4rem;
+}
+
+.service-details {
+color: #faf9f6;
+font-size: 0.8rem;
+padding: 0.2rem;
+position: absolute;
+height: 80%;
+overflow-y: scroll;
+}
+
+.info-bar {
+    width: 40%;
+    height: calc(100vh - 44px);
+    position: fixed;
+    right: 0;
+    background-color: #303545;
+    overflow: hidden;
+    max-width: 0;
+    transition: max-width 0.6s ease 0s;
+
+}
+
+.menu a{
+    display: block;
+    padding: 0.4rem 1rem 0.4rem 0.4rem;
+    color: #faf9f6;
+    font-size: 0.8rem;
+}
+
+.menu a:hover {
+    background-color: #85888c;
+}
+
+.hamburger {
+    cursor: pointer;
+    float: left;
+    padding: 1rem 0.5rem;
+}
+
+.line1, .line2, .line3 {
+    width: 30px;
+    height: 3px;
+    background-color: #303545;
+    display: block;
+    position: relative;
+}
+
+.line2 {
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+
+.hamburger:hover {
+    background: #85888c54;
+}
+
+.side-menu {
+    display: none;
+}
+
+.side-menu:checked ~ nav {
+    max-width: 100%;
+}
+
+.info-menu:checked ~ .info-bar {
+    max-width: 100%;
+}
+
+.service-tags {
+    text-align:  center;
+    padding: 1rem;
+}
+
+.service-tags button{
+    background-color: #fadadd;
+    border-radius: 40%;
+    text-decoration: none;
+    font-size: 0.6rem;
+    display: inline-block;
+    padding: 0.6rem;
+    color: #36383f;
+    margin-right: 1rem;
+}
+
+.map-container {
+    background-color:#043100;
+}
