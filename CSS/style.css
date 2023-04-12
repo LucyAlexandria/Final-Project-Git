@@ -122,7 +122,12 @@ nav {
 }
 
 .side-menu {
-    display: none;
+    /* display: none; */
+    opacity: 0;
+}
+
+.side-menu:focus +.hamburger{
+    background: #85888c54;
 }
 
 .side-menu:checked~nav {
