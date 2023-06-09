@@ -157,8 +157,8 @@ nav {
 .map-container {
     height: 75vh;
     width: 100vw;
-    /* background-color: #26751f43; */
+    background-color: #26751f43;
     position: absolute;
     bottom: 0;
-    /* z-index: -1; */
+    z-index: -1;
 }
