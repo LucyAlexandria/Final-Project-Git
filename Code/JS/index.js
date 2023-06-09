@@ -37,6 +37,26 @@ function restrictMap(map){
   // ));
 }
 
+function addMarkersToMap(map) {
+  var spiritLevelMarker = new H.map.Marker({lat:53.3990, lng:-2.9778});
+  // map.addObject(spiritLevelMarker);
+  var inTrustMarker = new H.map.Marker({lat:53.4719, lng:-3.0160});
+  // map.addObject(inTrustMarker);
+
+  spiritLevelMarker.setData('Spirit Level');
+  inTrustMarker.setData('InTrust');
+
+  var container = new H.map.Group({
+    objects: [spiritLevelMarker, inTrustMarker]
+  });
+
+  container.addEventListener('tap', function (evt) {
+    console.log(evt.target.getData());
+  });
+  map.addObject(container);
+
+}
+
 // initialize communication
 var platform = new H.service.Platform({
   apikey: "i4NUqM5SCb47XqGCOMUBSCYGxvAxa2t9phD9GpJPYcM"
@@ -62,6 +82,7 @@ var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 window.onload = function () {
   positionMap(map);
+  addMarkersToMap(map);
 }
 
 restrictMap(map);
