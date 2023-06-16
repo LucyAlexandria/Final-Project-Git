@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <!-- <script type="text/javascript" src='../test-credentials.js'></script>     -->
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1396.0.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Liverpool Trans Hub</h1>
+
+        <!-- hamburger menu -->
+        <input class="side-menu" type="checkbox" id="side-menu" />
+        <label class="hamburger" for="side-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </label>
+
+        <input class="info-menu" type="checkbox" id="info-menu" />
+
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="index.html">Services</a>
+                </li>
+                <li>
+                    <a href="bathroom.html">Bathrooms</a>
+                </li>
+                <li>
+                    <a href="directory.html">Directory</a>
+                </li>
+                <li>
+                    <a href="events.html">Events</a>
+                </li>
+                <li>
+                    <a href="links.html">Links</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="info-bar">
+            <div class="service-container">
+                <div class="service-title">
+                    <h2>Support Group</h2>
+                </div>
+                <div class="service-contact">
+                    <p>0123456789</p>
+                    <p>abc@example.com</p>
+                    <p>www.example.org</p>
+                </div>
+                <div class="service-details">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, temporibus error alias non
+                        porro facilis ad, at delectus fuga recusandae voluptatem, repudiandae quis. Nihil esse incidunt
+                        temporibus minima labore optio quo nobis quaerat quia quisquam officiis aspernatur, molestias
+                        rerum facilis officia id accusamus aliquid fuga pariatur perferendis magni asperiores totam.</p>
+                    <p>Nostrum nobis alias impedit mollitia obcaecati aut, cupiditate dolor voluptates nulla voluptatum
+                        illo libero expedita reiciendis necessitatibus dignissimos labore placeat. Officiis obcaecati
+                        dolore itaque dolorum odio iste, deleniti ea repudiandae expedita optio et sint incidunt sit id?
+                        Vel veniam neque placeat illum veritatis dignissimos ducimus. Saepe ipsum fugit molestias
+                        repudiandae.</p>
+                    <p>Quam atque alias iste dignissimos temporibus, ut ipsum eum quibusdam cupiditate quod voluptatem
+                        excepturi. Cupiditate harum sed perferendis aperiam corrupti, labore quos alias. Autem obcaecati
+                        amet a quod deserunt! Blanditiis quod exercitationem enim perspiciatis mollitia tenetur, eaque
+                        ullam provident at, optio deserunt nihil dicta iure aspernatur. Iusto, eaque? Deleniti,
+                        quibusdam.</p>
+                    <p>Pariatur quia eaque doloribus praesentium officia amet quo rerum enim libero commodi cum, error
+                        soluta incidunt maxime sequi labore nisi ut sit! Aliquam voluptas dolorem eius eos vero
+                        consectetur ab fugit quo, quas asperiores earum voluptate ipsam, officia ea, rerum cumque
+                        repudiandae fuga veniam corporis. Consectetur minus ad facere cum.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente esse officia, tenetur ducimus
+                        veniam pariatur at doloribus vero sed voluptates.</p>
+                    <p>Modi maxime temporibus eveniet facere aperiam obcaecati nam doloribus tempore, aliquid voluptas,
+                        impedit cumque vitae possimus esse reprehenderit rerum sapiente?</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla ex, adipisci sit alias possimus
+                        cum minus, veniam ipsa quas mollitia repudiandae consequuntur quam atque dolorum consequatur
+                        eveniet similique ut modi exercitationem. Ipsam eos modi, molestiae doloribus dolores laboriosam
+                        sapiente assumenda?</p>
+                    <p>Eum nesciunt iusto eius nostrum cumque dolorem nulla, vel dolores quae, ipsam eaque ullam esse
+                        expedita, assumenda animi. Esse aliquid, non quas recusandae vel animi sit autem harum!
+                        Laboriosam nisi doloremque rem praesentium obcaecati deserunt in amet ratione iste maxime.</p>
+                    <p>Deserunt rem fugiat repellendus quae dolorem unde ipsam vitae, illo cum consectetur earum
+                        nesciunt odit id? Ipsum, exercitationem quo deserunt voluptas iste aspernatur, vel incidunt
+                        eaque rerum rem voluptatem laudantium cumque, excepturi ut pariatur architecto quis doloribus
+                        fugiat autem. Ipsa.</p>
+                    <p>Neque quis, libero dolores sit odit earum incidunt impedit esse, architecto, distinctio possimus?
+                        Tempora, aliquid minima quo nihil neque nulla error? Minima unde, exercitationem quae, ullam
+                        maiores culpa quidem fugiat eum earum in, aliquid officiis. Vel, cumque maxime! Officiis, eaque.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="service-tags">
+        <button type="button">Peer Support</button>
+        <button type="button">Mental Health</button>
+        <button type="button">Sexual Health</button>
+        <button type="button">Hair Removal</button>
+        <button type="button">GP Practices</button>
+    </div>
+    <div class="map-container" id="map-container"></div>
+
+    <script type="text/javascript" src='JS/index.js'></script>
+</body>
+
+</html>
