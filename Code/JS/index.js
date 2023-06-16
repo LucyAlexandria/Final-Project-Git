@@ -24,7 +24,7 @@ var servicesArray = [];
 function positionMap(map){
   //coordinates for Liverpool
   map.setCenter({lat:53.4084, lng:-2.9916});
-  map.setZoom(12);
+  map.setZoom(11);
 }
 
 //restrict boundaries of map
@@ -84,9 +84,9 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 // default UI components
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
-function addMarkersToMap(map) {
-  var spiritLevelMarker = new H.map.Marker({lat:53.3991, lng:-2.9778});
-  map.addObject(spiritLevelMarker);
+function addMarkersToMap(map, latitude, longitude, name) {
+  var newMarker = new H.map.Marker({lat:latitude, lng:longitude});
+  map.addObject(newMarker);
 }
 
 // get one item from database and return to log
@@ -109,7 +109,7 @@ function addMarkersToMap(map) {
 //   }
 // }
 
-function populateServicesArray(){
+function getServicesFromDatabase(){
   var params = {TableName: "trans-services"};
   dynamoDB.scan(params, function (err, data){
     if (err) {
@@ -117,6 +117,12 @@ function populateServicesArray(){
     }
     else {
       console.log("Success", data);
+      var table = data.Items;
+      let i = 0
+      while (i < table.length) {
+        addMarkersToMap(map, table[i].latitude.N, table[i].longitude.N);
+        i++;
+      }
     }
   });
 }
@@ -126,8 +132,7 @@ function populateServicesArray(){
 
 window.onload = function () {
   positionMap(map);
-  addMarkersToMap(map);
-  populateServicesArray();
+  getServicesFromDatabase();
  // getOneItem()
 
 }
