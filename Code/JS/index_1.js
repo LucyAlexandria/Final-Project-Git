@@ -16,9 +16,6 @@ var dynamoDB = new AWS.DynamoDB();
 //   }
 // });
 
-// initialise array of json objects from database
-var servicesArray = [];
-
 
 // centre map on Liverpool
 function positionMap(map){
@@ -92,42 +89,26 @@ function addMarkersToMap(map) {
 // get one item from database and return to log
 // test to check that get is working
 // asynchronous function so await and promise can be used
-// async function getOneItem(){
-//   try {
-//       var params = {
-//           Key: {
-//            id:  {
-//             S: "123"
-//            }
-//           }, 
-//           TableName: "trans-services"
-//       };
-//       var result = await dynamoDB.getItem(params).promise()
-//       console.log(JSON.stringify(result))
-//   } catch (error) {
-//       console.error(error);
-//   }
-// }
-
-function populateServicesArray(){
-  var params = {TableName: "trans-services"};
-  dynamoDB.scan(params, function (err, data){
-    if (err) {
-      console.log("Error", err);
-    }
-    else {
-      console.log("Success", data);
-    }
-  });
+async function getOneItem(){
+  try {
+      var params = {
+          Key: {
+           id:  {
+            S: "123"
+           }
+          }, 
+          TableName: "trans-services"
+      };
+      var result = await dynamoDB.getItem(params).promise()
+      console.log(JSON.stringify(result))
+  } catch (error) {
+      console.error(error);
+  }
 }
-
-
-
 
 window.onload = function () {
   positionMap(map);
   addMarkersToMap(map);
-  populateServicesArray();
  // getOneItem()
 
 }
