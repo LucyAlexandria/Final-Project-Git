@@ -5,6 +5,8 @@ var creds = new AWS.CognitoIdentityCredentials({
 
 myConfig = new AWS.Config({credentials: creds, region: 'eu-north-1'});
 AWS.config.update(myConfig);
+
+
 var dynamoDB = new AWS.DynamoDB();
 
 //check config file
@@ -84,7 +86,7 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 // default UI components
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
-function addMarkersToMap(map, latitude, longitude, name) {
+function addMarkersToMap(map, latitude, longitude) {
   var newMarker = new H.map.Marker({lat:latitude, lng:longitude});
   map.addObject(newMarker);
 }
