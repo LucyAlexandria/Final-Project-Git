@@ -18,9 +18,6 @@ var dynamoDB = new AWS.DynamoDB();
 //   }
 // });
 
-// initialise array of json objects from database
-var servicesArray = [];
-
 
 // centre map on Liverpool
 function positionMap(map){
@@ -86,30 +83,43 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 // default UI components
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
-function addMarkersToMap(map, latitude, longitude) {
+var servicesContainer = new H.map.Group({services: []});
+
+function addMarkersToContainer(map, latitude, longitude, id) {
   var newMarker = new H.map.Marker({lat:latitude, lng:longitude});
-  map.addObject(newMarker);
+  newMarker.setData(id);
+  //console.log(newMarker.getData());
+  servicesContainer.addObject(newMarker);
 }
 
-// get one item from database and return to log
-// test to check that get is working
-// asynchronous function so await and promise can be used
-// async function getOneItem(){
-//   try {
-//       var params = {
-//           Key: {
-//            id:  {
-//             S: "123"
-//            }
-//           }, 
-//           TableName: "trans-services"
-//       };
-//       var result = await dynamoDB.getItem(params).promise()
-//       console.log(JSON.stringify(result))
-//   } catch (error) {
-//       console.error(error);
-//   }
-// }
+function addMarkerContainerToMap(){
+  map.addObject(servicesContainer);
+}
+
+servicesContainer.addEventListener('tap', function(event){
+  selectedServiceID = event.target.getData();
+  console.log(selectedServiceID);
+
+  currentServiceDisplayed = document.getElementById('service-id').innerHTML;
+  console.log(currentServiceDisplayed);
+
+  
+  
+  if (selectedServiceID !== currentServiceDisplayed){
+    params = {TableName: "trans-services", Key: {id: {S: selectedServiceID}}};
+    dynamoDB.getItem(params, function(err, data){
+      if(err){
+        console.log("Error", err);
+      }
+      else {
+        console.log("Success", data);
+        //var service = data.Item;
+      }
+    });
+  }
+
+});
+
 
 function getServicesFromDatabase(){
   var params = {TableName: "trans-services"};
@@ -122,9 +132,10 @@ function getServicesFromDatabase(){
       var table = data.Items;
       let i = 0
       while (i < table.length) {
-        addMarkersToMap(map, table[i].latitude.N, table[i].longitude.N);
+        addMarkersToContainer(map, table[i].latitude.N, table[i].longitude.N, table[i].id.S);
         i++;
       }
+      addMarkerContainerToMap();
     }
   });
 }
@@ -135,7 +146,6 @@ function getServicesFromDatabase(){
 window.onload = function () {
   positionMap(map);
   getServicesFromDatabase();
- // getOneItem()
 
 }
 
