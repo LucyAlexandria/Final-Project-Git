@@ -88,6 +88,7 @@ var servicesContainer = new H.map.Group({services: []});
 function addMarkersToContainer(map, latitude, longitude, id) {
   var newMarker = new H.map.Marker({lat:latitude, lng:longitude});
   newMarker.setData(id);
+  newMarker.setZIndex(2);
   //console.log(newMarker.getData());
   servicesContainer.addObject(newMarker);
 }
@@ -98,13 +99,11 @@ function addMarkerContainerToMap(){
 
 servicesContainer.addEventListener('tap', function(event){
   selectedServiceID = event.target.getData();
-  console.log(selectedServiceID);
+  //console.log(selectedServiceID);
 
   currentServiceDisplayed = document.getElementById('service-id').innerHTML;
-  console.log(currentServiceDisplayed);
+  //console.log(currentServiceDisplayed);
 
-  
-  
   if (selectedServiceID !== currentServiceDisplayed){
     params = {TableName: "trans-services", Key: {id: {S: selectedServiceID}}};
     dynamoDB.getItem(params, function(err, data){
@@ -112,14 +111,18 @@ servicesContainer.addEventListener('tap', function(event){
         console.log("Error", err);
       }
       else {
-        console.log("Success", data);
-        //var service = data.Item;
+        //console.log("retrieved ID: ", data.Item.id.S);
+        document.getElementById('service-id').innerHTML = data.Item.id.S;
+        document.getElementById('service-title').innerHTML = data.Item.name.S;
+        //console.log(document.getElementById('service-id').innerHTML);
       }
     });
   }
+  // else {
+  //   console.log("repeat click");
+  // }
 
 });
-
 
 function getServicesFromDatabase(){
   var params = {TableName: "trans-services"};
@@ -140,7 +143,29 @@ function getServicesFromDatabase(){
   });
 }
 
+function checkService(service){
+  var serviceType = service.id;
+  console.log(serviceType);
 
+  if (service.checked == true){
+    var params = {
+      TableName: "trans-services",
+      FilterExpression : "#type = :typeValue",
+      ExpressionAttributeNames: {"#type": "type"},
+      ExpressionAttributeValues: {':typeValue': {"S": serviceType}}
+      }
+
+    dynamoDB.scan(params, function (err, data){
+      if (err) {
+        console.log("Error", err);
+      }
+      else {
+        console.log("Success", data);
+      }
+    });
+  }
+
+}
 
 
 window.onload = function () {

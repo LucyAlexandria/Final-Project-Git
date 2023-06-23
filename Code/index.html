@@ -55,8 +55,8 @@
         <div class="info-bar">
             <div class ="service-id" id="service-id" style = "display:none">xxxx</div>
             <div class="service-container">
-                <div class="service-title">
-                    <h2>Support Group</h2>
+                <div class="service-title" id="service-title">
+                    Support Group
                 </div>
                 <div class="service-contact">
                     <p>0123456789</p>
@@ -107,11 +107,43 @@
 
     </header>
     <div class="service-tags">
-        <button type="button">Peer Support</button>
+        <div class="btn peer-support">
+            <label>
+                <input type="checkbox" onclick="checkService(this)" id="peer-support">
+                <span id="peer-support-span">Peer Support</span>
+            </label>
+        </div>
+        <div class="btn mental-health">
+            <label>
+                <input type="checkbox" onclick="checkService(this)" id="mental-health">
+                <span>Mental Health</span>
+            </label>
+        </div>
+        <div class="btn sexual-health">
+            <label>
+                <input type="checkbox" onclick="checkService(this)" id="sexual-health">
+                <span>Sexual Health</span>
+            </label>
+        </div>
+        <div class="btn hair-removal">
+            <label>
+                <input type="checkbox" onclick="checkService(this)" id="hair-removal">
+                <span>Hair Removal</span>
+            </label>
+        </div>
+        <div class="btn gp-practices">
+            <label>
+                <input type="checkbox" onclick="checkService(this)" id="gp-practices">
+                <span>GP Practices</span>
+            </label>
+        </div>
+
+
+        <!-- <button type="button">Peer Support</button>
         <button type="button">Mental Health</button>
         <button type="button">Sexual Health</button>
         <button type="button">Hair Removal</button>
-        <button type="button">GP Practices</button>
+        <button type="button">GP Practices</button> -->
     </div>
     <div class="map-container" id="map-container"></div>
 
