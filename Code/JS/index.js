@@ -126,45 +126,80 @@ servicesContainer.addEventListener('tap', function(event){
 
 function getServicesFromDatabase(){
   var params = {TableName: "trans-services"};
-  dynamoDB.scan(params, function (err, data){
-    if (err) {
-      console.log("Error", err);
-    }
-    else {
-      console.log("Success", data);
-      var table = data.Items;
-      let i = 0
-      while (i < table.length) {
-        addMarkersToContainer(map, table[i].latitude.N, table[i].longitude.N, table[i].id.S);
-        i++;
+  dynamoDB.scan(params, 
+    function (err, data){
+      if (err) {
+        console.log("Error", err);
       }
-      addMarkerContainerToMap();
+      else {
+        console.log("Success", data);
+        var table = data.Items;
+        let i = 0
+        while (i < table.length) {
+          addMarkersToContainer(map, table[i].latitude.N, table[i].longitude.N, table[i].id.S);
+          i++;
+        }
+        addMarkerContainerToMap();
+      }
     }
-  });
+  );
 }
 
 function checkService(service){
   var serviceType = service.id;
-  console.log(serviceType);
+  // console.log(serviceType);
+
+  var attributeValues ={};
+
+  if (document.getElementById('peer-support').checked == true){
+    attributeValues.push({':typeValue': {"S": "peer-support"}})
+  }
+  if (document.getElementById('mental-health').checked == true){
+    attributeValues.push({':typeValue': {"S": "mental-health"}})
+  }
+  if (document.getElementById('sexual-health').checked == true){
+    attributeValues.push({':typeValue': {"S": "sexual-health"}})
+  }  
+  if (document.getElementById('hair-removal').checked == true){
+    attributeValues.push({':typeValue': {"S": "hair-removal"}})
+  }
+  if (document.getElementById('gp-practises').checked == true){
+    attributeValues.push({':typeValue': {"S": "gp-practises"}})
+  }
+  console.log(attributeValues);
 
   if (service.checked == true){
     var params = {
       TableName: "trans-services",
       FilterExpression : "#type = :typeValue",
       ExpressionAttributeNames: {"#type": "type"},
-      ExpressionAttributeValues: {':typeValue': {"S": serviceType}}
-      }
+      ExpressionAttributeValues: attributeValues
 
-    dynamoDB.scan(params, function (err, data){
-      if (err) {
-        console.log("Error", err);
       }
-      else {
-        console.log("Success", data);
+      // taken outside of ExpressionAttributeValues
+      // {
+      //   ':typeValue': {"S": serviceType}
+      // }
+
+    dynamoDB.scan(params,
+      function (err, data){
+        if (err) {
+          console.log("Error", err);
+        }
+        else {
+          //  console.log("Success", data);
+          servicesContainer.removeAll();
+          var table = data.Items;
+          let i = 0
+          while (i < table.length) {
+            addMarkersToContainer(map, table[i].latitude.N, table[i].longitude.N, table[i].id.S);
+            i++;
+          }
+          addMarkerContainerToMap();
+        }
       }
-    });
+    );
   }
-
 }
 
 
