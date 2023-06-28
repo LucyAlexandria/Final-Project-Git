@@ -145,41 +145,46 @@ function getServicesFromDatabase(){
   );
 }
 
-function checkService(service){
-  var serviceType = service.id;
-  // console.log(serviceType);
-
+function checkService(){
   var attributeValues ={};
+  var activeServices = [];
+
 
   if (document.getElementById('peer-support').checked == true){
-    attributeValues.push({':typeValue': {"S": "peer-support"}})
+    attributeValues[':typeValue1'] = {"S": "peer-support"};
+    activeServices.push(":typeValue1");
   }
   if (document.getElementById('mental-health').checked == true){
-    attributeValues.push({':typeValue': {"S": "mental-health"}})
+    attributeValues[':typeValue2'] = {"S": "mental-health"};
+    activeServices.push(":typeValue2");
   }
   if (document.getElementById('sexual-health').checked == true){
-    attributeValues.push({':typeValue': {"S": "sexual-health"}})
+    attributeValues[':typeValue3'] = {"S": "sexual-health"};
+    activeServices.push(":typeValue3");
   }  
   if (document.getElementById('hair-removal').checked == true){
-    attributeValues.push({':typeValue': {"S": "hair-removal"}})
+    attributeValues[':typeValue4'] = {"S": "hair-removal"};
+    activeServices.push(":typeValue4");
   }
-  if (document.getElementById('gp-practises').checked == true){
-    attributeValues.push({':typeValue': {"S": "gp-practises"}})
+  if (document.getElementById('gp-practices').checked == true){
+    attributeValues[':typeValue5'] = {"S": "gp-practices"};
+    activeServices.push(":typeValue5");
   }
-  console.log(attributeValues);
+  var servicesFilter = "#typeValue IN (" + activeServices.join(', ') + ")";
 
-  if (service.checked == true){
+  // console.log(attributeValues);
+  // console.log(servicesFilter);
+
+  if (activeServices.length == 0) {
+    servicesContainer.removeAll();
+  }
+  else {
     var params = {
       TableName: "trans-services",
-      FilterExpression : "#type = :typeValue",
-      ExpressionAttributeNames: {"#type": "type"},
+      FilterExpression : servicesFilter,
+      ExpressionAttributeNames: {"#typeValue": "type"},
       ExpressionAttributeValues: attributeValues
-
       }
-      // taken outside of ExpressionAttributeValues
-      // {
-      //   ':typeValue': {"S": serviceType}
-      // }
 
     dynamoDB.scan(params,
       function (err, data){
@@ -187,7 +192,6 @@ function checkService(service){
           console.log("Error", err);
         }
         else {
-          //  console.log("Success", data);
           servicesContainer.removeAll();
           var table = data.Items;
           let i = 0
@@ -195,6 +199,7 @@ function checkService(service){
             addMarkersToContainer(map, table[i].latitude.N, table[i].longitude.N, table[i].id.S);
             i++;
           }
+          // console.log("Success", data);
           addMarkerContainerToMap();
         }
       }
@@ -202,11 +207,9 @@ function checkService(service){
   }
 }
 
-
 window.onload = function () {
   positionMap(map);
   getServicesFromDatabase();
 
 }
-
 restrictMap(map);
