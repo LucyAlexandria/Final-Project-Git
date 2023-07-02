@@ -89,7 +89,6 @@ function addMarkersToContainer(map, latitude, longitude, id) {
   var newMarker = new H.map.Marker({lat:latitude, lng:longitude});
   newMarker.setData(id);
   newMarker.setZIndex(2);
-  //console.log(newMarker.getData());
   servicesContainer.addObject(newMarker);
 }
 
@@ -99,10 +98,7 @@ function addMarkerContainerToMap(){
 
 servicesContainer.addEventListener('tap', function(event){
   selectedServiceID = event.target.getData();
-  //console.log(selectedServiceID);
-
   currentServiceDisplayed = document.getElementById('service-id').innerHTML;
-  //console.log(currentServiceDisplayed);
 
   if (selectedServiceID !== currentServiceDisplayed){
     params = {TableName: "trans-services", Key: {id: {S: selectedServiceID}}};
@@ -111,17 +107,11 @@ servicesContainer.addEventListener('tap', function(event){
         console.log("Error", err);
       }
       else {
-        //console.log("retrieved ID: ", data.Item.id.S);
         document.getElementById('service-id').innerHTML = data.Item.id.S;
         document.getElementById('service-title').innerHTML = data.Item.name.S;
-        //console.log(document.getElementById('service-id').innerHTML);
       }
     });
   }
-  // else {
-  //   console.log("repeat click");
-  // }
-
 });
 
 function getServicesFromDatabase(){
@@ -149,7 +139,6 @@ function checkService(){
   var attributeValues ={};
   var activeServices = [];
 
-
   if (document.getElementById('peer-support').checked == true){
     attributeValues[':typeValue1'] = {"S": "peer-support"};
     activeServices.push(":typeValue1");
@@ -171,9 +160,6 @@ function checkService(){
     activeServices.push(":typeValue5");
   }
   var servicesFilter = "#typeValue IN (" + activeServices.join(', ') + ")";
-
-  // console.log(attributeValues);
-  // console.log(servicesFilter);
 
   if (activeServices.length == 0) {
     servicesContainer.removeAll();
