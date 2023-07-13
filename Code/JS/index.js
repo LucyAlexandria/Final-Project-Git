@@ -134,6 +134,10 @@ servicesContainer.addEventListener('tap', function(event){
   selectedServiceID = event.target.getData();
   currentServiceDisplayed = document.getElementById('service-id').innerHTML;
 
+  if (!document.getElementById('info-menu').checked) {
+    document.getElementById('info-menu').checked = true;
+  };
+
   if (selectedServiceID !== currentServiceDisplayed){
     params = {TableName: "trans-services", Key: {id: {S: selectedServiceID}}};
     dynamoDB.getItem(params, function(err, data){
@@ -147,6 +151,25 @@ servicesContainer.addEventListener('tap', function(event){
     });
   }
 });
+
+// document.getElementById("map-container").addEventListener('click', function (event){
+//   var tapMarker = false;
+//   console.log(tapMarker);
+//   servicesContainer.addEventListener('tap', function(event){
+//     tapMarker = true;
+//   })
+
+//   if (tapMarker == false) {
+//     if (document.getElementById('info-menu').checked) {
+//       document.getElementById('info-menu').checked = false;
+//     };
+//   };
+//   if (tapMarker == true) {
+//     if (!document.getElementById('info-menu').checked) {
+//       document.getElementById('info-menu').checked = true;
+//     };
+//   };
+// });
 
 function getServicesFromDatabase(){
   var params = {TableName: "trans-services"};
@@ -170,6 +193,9 @@ function getServicesFromDatabase(){
 }
 
 function checkService(){
+     if (document.getElementById('info-menu').checked) {
+       document.getElementById('info-menu').checked = false;
+     };
   var attributeValues ={};
   var activeServices = [];
 
