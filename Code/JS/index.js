@@ -85,11 +85,45 @@ var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 var servicesContainer = new H.map.Group({services: []});
 
-function addMarkersToContainer(map, latitude, longitude, id) {
-  var newMarker = new H.map.Marker({lat:latitude, lng:longitude});
+function addMarkersToContainer(map, latitude, longitude, id, type) {
+  var svgMarkup = '<svg fill="${COLOR}" width="24" height="24" ' +
+  'xmlns="http://www.w3.org/2000/svg">' +
+  '<path d="m8.075 23.52c-6.811-9.878-8.075-10.891-8.075-14.52 0-4.971 ' +
+  '4.029-9 9-9s9 4.029 9 9c0 3.629-1.264 4.64-8.075 ' +
+  '14.516-.206.294-.543.484-.925.484s-.719-.19-.922-.48l-.002-.004z"/>' +
+  '</svg>';
+  // reference marker svg image code from https://www.svgviewer.dev/s/457745/map-marker
+
+   var markerColour = 'black';
+   if (type == 'peer-support') {
+    markerColour = 'red';
+   }
+   if (type == 'mental-health') {
+    markerColour = 'blue';
+   }
+   if (type == 'sexual-health') {
+    markerColour = 'pink';
+   }
+   if (type == 'hair-removal') {
+    markerColour = 'green';
+   }
+   if (type == 'gp-practices') {
+    markerColour = 'yellow';
+   }
+
+
+  var markerIcon = new H.map.Icon(
+    svgMarkup.replace('${COLOR}', markerColour)),
+    newMarker = new H.map.Marker({lat: latitude, lng: longitude },
+      {icon: markerIcon});
+
+  // var mapIcon = new H.map.Icon(svgMarkup.replace('${COLOR}', markerColour).replace('${TEXT}', markerText)),
+  //    newMarker = new H.map.Marker({lat:latitude, lng:longitude}, {icon: mapIcon});
+
   newMarker.setData(id);
   newMarker.setZIndex(2);
   servicesContainer.addObject(newMarker);
+  
 }
 
 function addMarkerContainerToMap(){
@@ -122,11 +156,11 @@ function getServicesFromDatabase(){
         console.log("Error", err);
       }
       else {
-        console.log("Success", data);
+        // console.log("Success", data);
         var table = data.Items;
         let i = 0
         while (i < table.length) {
-          addMarkersToContainer(map, table[i].latitude.N, table[i].longitude.N, table[i].id.S);
+          addMarkersToContainer(map, table[i].latitude.N, table[i].longitude.N, table[i].id.S, table[i].type.S);
           i++;
         }
         addMarkerContainerToMap();
@@ -180,12 +214,12 @@ function checkService(){
         else {
           servicesContainer.removeAll();
           var table = data.Items;
-          let i = 0
+          let i = 0;
           while (i < table.length) {
-            addMarkersToContainer(map, table[i].latitude.N, table[i].longitude.N, table[i].id.S);
+            addMarkersToContainer(map, table[i].latitude.N, table[i].longitude.N, table[i].id.S, table[i].type.S);
             i++;
           }
-          // console.log("Success", data);
+          //console.log("Success", data);
           addMarkerContainerToMap();
         }
       }
