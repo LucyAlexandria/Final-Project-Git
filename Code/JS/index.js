@@ -147,29 +147,44 @@ servicesContainer.addEventListener('tap', function(event){
       else {
         document.getElementById('service-id').innerHTML = data.Item.id.S;
         document.getElementById('service-title').innerHTML = data.Item.name.S;
+        document.getElementById('service-details').innerHTML = data.Item.description.S;
+        if(data.Item.hasOwnProperty("phone")){
+          document.getElementById('service-phone').innerHTML = data.Item.phone.S;
+          document.getElementById('service-phone').style = "display:block";
+          document.getElementById('service-phone-link').href = "tel:", data.phone.wiki.S;
+        }
+        else {
+          document.getElementById('service-phone').style = "display:none";
+        };
+        if(data.Item.hasOwnProperty("website")){
+          document.getElementById('service-website').innerHTML = data.Item.website.S;
+          document.getElementById('service-website').style = "display:block";
+          document.getElementById('service-website-link').href = data.Item.website.S;
+        }
+        else {
+          document.getElementById('service-website').style = "display:none";
+        };
+        if(data.Item.hasOwnProperty("wiki")){
+          document.getElementById('service-wiki').innerHTML = data.Item.wiki.S;
+          document.getElementById('service-wiki').style = "display:block";
+          document.getElementById('service-wiki-link').href = data.Item.wiki.S;
+        }
+        else {
+          document.getElementById('service-wiki').style = "display:none";
+        };
+        if(data.Item.hasOwnProperty("email")){
+          document.getElementById('service-email').innerHTML = data.Item.email.S;
+          document.getElementById('service-email').style = "display:block";
+          document.getElementById('service-email-link').href = "mailto: ", data.Item.wiki.S;
+        }
+        else {
+          document.getElementById('service-email').style = "display:none";
+        };
       }
     });
   }
 });
 
-// document.getElementById("map-container").addEventListener('click', function (event){
-//   var tapMarker = false;
-//   console.log(tapMarker);
-//   servicesContainer.addEventListener('tap', function(event){
-//     tapMarker = true;
-//   })
-
-//   if (tapMarker == false) {
-//     if (document.getElementById('info-menu').checked) {
-//       document.getElementById('info-menu').checked = false;
-//     };
-//   };
-//   if (tapMarker == true) {
-//     if (!document.getElementById('info-menu').checked) {
-//       document.getElementById('info-menu').checked = true;
-//     };
-//   };
-// });
 
 function getServicesFromDatabase(){
   var params = {TableName: "trans-services"};
