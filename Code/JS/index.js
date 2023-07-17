@@ -208,11 +208,14 @@ function getServicesFromDatabase(){
 }
 
 function checkService(){
+  var gender = document.querySelector('input[name="gender"]:checked').value;
+
      if (document.getElementById('info-menu').checked) {
        document.getElementById('info-menu').checked = false;
      };
   var attributeValues ={};
   var activeServices = [];
+  var genderSelection = [];
 
   if (document.getElementById('peer-support').checked == true){
     attributeValues[':typeValue1'] = {"S": "peer-support"};
@@ -234,16 +237,38 @@ function checkService(){
     attributeValues[':typeValue5'] = {"S": "gp-practices"};
     activeServices.push(":typeValue5");
   }
-  var servicesFilter = "#typeValue IN (" + activeServices.join(', ') + ")";
 
-  if (activeServices.length == 0) {
+  if (gender == "femme") {
+    attributeValues[':genderValue1'] = {"S": "femme"};
+    genderSelection.push(":genderValue1");
+    attributeValues[':genderValue3'] = {"S": "both"};
+    genderSelection.push(":genderValue3");
+  }
+  if (gender == "masc") {
+    attributeValues[':genderValue2'] = {"S": "masc"};
+    genderSelection.push(":genderValue2");
+    attributeValues[':genderValue3'] = {"S": "both"};
+    genderSelection.push(":genderValue3");
+  }
+  if (gender == "both"){
+    attributeValues[':genderValue1'] = {"S": "femme"};
+    genderSelection.push(":genderValue1");
+    attributeValues[':genderValue2'] = {"S": "masc"};
+    genderSelection.push(":genderValue2");
+    attributeValues[':genderValue3'] = {"S": "both"};
+    genderSelection.push(":genderValue3");
+  }
+
+  var servicesFilter = "#typeValue IN (" + activeServices.join(', ') + ") AND #genderValue IN (" + genderSelection.join(', ') + ")";
+  
+    if (activeServices.length == 0) {
     servicesContainer.removeAll();
   }
   else {
     var params = {
       TableName: "trans-services",
       FilterExpression : servicesFilter,
-      ExpressionAttributeNames: {"#typeValue": "type"},
+      ExpressionAttributeNames: {"#typeValue": "type", "#genderValue": "gender"},
       ExpressionAttributeValues: attributeValues
       }
 
@@ -266,6 +291,10 @@ function checkService(){
       }
     );
   }
+}
+
+function femmemasc() {
+
 }
 
 window.onload = function () {
