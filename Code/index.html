@@ -105,13 +105,20 @@
         </div>
 
     </header>
-
-    <input type="radio" id="both" name="gender" value="both" checked onchange="checkService()">
-    <label for="femme">All services</label>
-    <input type="radio" id="femme" name="gender" value="femme" onchange="checkService()">
-    <label for="femme">Trans-feminine services</label>
-    <input type="radio" id="masc" name="gender" value="masc" onchange="checkService()">
-    <label for="femme">Trans-masculine services</label>
+    <div class="gender-tags">
+        <div class="gender-both">
+            <input type="radio" id="both" name="gender" value="both" checked onchange="checkService()">
+            <label for="femme">All services</label>
+        </div>
+        <div class="gender-femme">
+            <input type="radio" id="femme" name="gender" value="femme" onchange="checkService()">
+            <label for="femme">Trans-feminine services</label>
+        </div>
+        <div class="gender-masc">
+            <input type="radio" id="masc" name="gender" value="masc" onchange="checkService()">
+            <label for="femme">Trans-masculine services</label>
+            </div>
+    </div>
 
     <div class="service-tags">
         <div class="btn peer-support">

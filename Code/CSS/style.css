@@ -167,6 +167,31 @@ nav {
     max-width: 100%;
 }
 
+.gender-tags {
+    display: grid;
+}
+
+.gender-tags {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0.4rem;
+    margin: 0.2rem;
+}
+
+.service-tags {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.btn {
+    margin: 0.1rem;
+    padding: 0.4rem;
+    background-color: #303545;
+    border-radius: 0.5rem;
+    border: 0.1rem solid #faf9f6;
+    overflow: hidden;
+    float: left;
+}
 
 
 .map-container {
@@ -175,4 +200,5 @@ nav {
     position: absolute;
     width: 100vw;
     z-index: 0;
+    /* display: grid; */
 }
