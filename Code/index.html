@@ -113,60 +113,62 @@
             </li>
         </ul>
     </nav>
-
+    <div class="gender-tags-container">
     <div class="gender-tags">
-        <div class="gender-both">
+        <div class="btn gender-both">
+            <label>
             <input type="radio" id="both" name="gender" value="both" checked onchange="checkService()">
-            <label for="femme">All services</label>
+            <span>All services</span>
+        </label>
         </div>
-        <div class="gender-femme">
+        <div class="btn gender-femme">
+            <label>
             <input type="radio" id="femme" name="gender" value="femme" onchange="checkService()">
-            <label for="femme">Trans-feminine services</label>
+            <span>Trans-feminine services</span>
+            </label>
         </div>
-        <div class="gender-masc">
+        <div class="btn gender-masc">
+            <label>
             <input type="radio" id="masc" name="gender" value="masc" onchange="checkService()">
-            <label for="femme">Trans-masculine services</label>
-            </div>
+            <span>Trans-masculine services</span>
+            </label>
+        </div>
+    </div>
     </div>
 
+    <div class="service-tags-container">
     <div class="service-tags">
         <div class="btn peer-support">
             <label>
-                <input type="checkbox" onclick="checkService()" id="peer-support">
+                <input type="checkbox" onclick="checkService()" id="peer-support" checked>
                 <span>Peer Support</span>
             </label>
         </div>
         <div class="btn mental-health">
             <label>
-                <input type="checkbox" onclick="checkService()" id="mental-health">
+                <input type="checkbox" onclick="checkService()" id="mental-health" checked>
                 <span>Mental Health</span>
             </label>
         </div>
         <div class="btn sexual-health">
             <label>
-                <input type="checkbox" onclick="checkService()" id="sexual-health">
+                <input type="checkbox" onclick="checkService()" id="sexual-health" checked>
                 <span>Sexual Health</span>
             </label>
         </div>
         <div class="btn hair-removal">
             <label>
-                <input type="checkbox" onclick="checkService()" id="hair-removal">
+                <input type="checkbox" onclick="checkService()" id="hair-removal"checked>
                 <span>Hair Removal</span>
             </label>
         </div>
         <div class="btn gp-practices">
             <label>
-                <input type="checkbox" onclick="checkService()" id="gp-practices">
+                <input type="checkbox" onclick="checkService()" id="gp-practices" checked>
                 <span>GP Practices</span>
             </label>
         </div>
-
-
-        <!-- <button type="button">Peer Support</button>
-        <button type="button">Mental Health</button>
-        <button type="button">Sexual Health</button>
-        <button type="button">Hair Removal</button>
-        <button type="button">GP Practices</button> -->
+    </div>
     </div>
     <div class="map-container" id="map-container"></div>
 

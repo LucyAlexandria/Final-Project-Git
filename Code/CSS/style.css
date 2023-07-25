@@ -188,28 +188,37 @@ nav {
     min-width: 15rem;
 }
 
-.gender-tags {
+.gender-tags-container {
     display: grid;
-}
-
-.gender-tags {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 2rem;
+    padding: 1rem;
     grid-gap: 1rem;
+    text-align: center;
 }
 
-.service-tags {
+.gender-tags {
+    margin: auto;
+}
+
+.service-tags-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 1rem;
     padding: 2rem;
     padding-top: 0;
     padding-left: 3rem;
     padding-right: 3rem;
+
+}
+
+.service-tags {
+    margin: auto;
+    text-align: center;
 }
 
 /* https://codepen.io/attilahajzer/pen/WbbLpe */
+
+div label input {
+    margin-right: 100%;
+}
 
 .btn {
     margin: 0.1rem;
@@ -218,9 +227,46 @@ nav {
     border-radius: 0.5rem;
     border: 0.1rem solid #faf9f6;
     overflow: hidden;
-    float: left;
+    /* float: left; */
+    display: inline-block;
 }
 
+.btn label{
+  /* float: left; */
+  line-height: 1rem;
+  /* width: 5rem;
+  height: 2rem; */
+}
+
+.btn label span {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    display: block;
+}
+
+.btn label input {
+    position: absolute;
+    display: none;
+    color: #faf9f6;
+}
+
+.btn label input + span {
+    color: #faf9f6;
+}
+
+.btn input:checked + span {
+    color: #faf9f6;
+    text-shadow: 0 0 0.4rem rgba(0, 0, 0, 1);
+}
+
+.peer-support input:checked + span{background-color: #f92e42;}
+.mental-health input:checked + span{background-color: #1BB8F7;}
+.sexual-health input:checked + span{background-color: #F3A4CF;}
+.hair-removal input:checked + span{background-color: #9ee472;}
+.gp-practices input:checked + span{background-color: #b3b04a;}
+.gender-both input:checked + span{background-color: #6b029f}
+.gender-femme input:checked + span{background-color: #F3A4CF;}
+.gender-masc input:checked + span{background-color: #1BB8F7;}
 
 .map-container {
     bottom: 0;    
