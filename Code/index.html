@@ -22,36 +22,44 @@
     <header>
 
         <div>
-        <!-- hamburger menu -->
-
-        <label class="hamburger" for="side-menu">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </label>
+            <!-- hamburger menu -->
+            <label class="hamburger" for="side-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </label>
         </div>
         <div>
             <h1>Liverpool Trans Hub</h1>
         </div>
-
-
-
-
-
-
     </header>
+
     <input class="info-menu" type="checkbox" id="info-menu" />
 
     <div class="info-bar">
-        <div class ="service-id" id="service-id" style = "display:none">xxxx</div>
+        <div class="service-id" id="service-id" style="display:none">xxxx</div>
         <div class="service-container">
-            <div class="service-title" id="service-title">
-                Support Group
+            <div class="title-cross-container">
+                <div class="service-title" id="service-title">
+                    Support Group
+                </div>
+                <label class="close-cross" for="info-menu">
+                    <div class="xline1"></div>
+                    <div class="xline2"></div>
+                </label>
             </div>
-            <a id="service-email-link"><div class="service-email" id="service-email">placeholder@placeholder</div></a>
-            <a id="service-phone-link"><div class="service-phone" id="service-phone">01234567890</div></a>
-            <a id="service-website-link"><div class="service-website" id="service-website">www.placeholder.com</div></a>
-            <a id="service-wiki-link"><div class="service-wiki" id="service-wiki">https://transliverpool.com</div></a>
+            <a id="service-email-link">
+                <div class="service-email" id="service-email">placeholder@placeholder</div>
+            </a>
+            <a id="service-phone-link">
+                <div class="service-phone" id="service-phone">01234567890</div>
+            </a>
+            <a id="service-website-link">
+                <div class="service-website" id="service-website">www.placeholder.com</div>
+            </a>
+            <a id="service-wiki-link">
+                <div class="service-wiki" id="service-wiki">https://transliverpool.com</div>
+            </a>
             <div class="service-details" id="service-details">
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, temporibus error alias non
                     porro facilis ad, at delectus fuga recusandae voluptatem, repudiandae quis. Nihil esse incidunt
@@ -114,61 +122,61 @@
         </ul>
     </nav>
     <div class="gender-tags-container">
-    <div class="gender-tags">
-        <div class="btn gender-both">
-            <label>
-            <input type="radio" id="both" name="gender" value="both" checked onchange="checkService()">
-            <span>All services</span>
-        </label>
+        <div class="gender-tags">
+            <div class="btn gender-both">
+                <label>
+                    <input type="radio" id="both" name="gender" value="both" checked onchange="checkService()">
+                    <span>All services</span>
+                </label>
+            </div>
+            <div class="btn gender-femme">
+                <label>
+                    <input type="radio" id="femme" name="gender" value="femme" onchange="checkService()">
+                    <span>Trans-feminine services</span>
+                </label>
+            </div>
+            <div class="btn gender-masc">
+                <label>
+                    <input type="radio" id="masc" name="gender" value="masc" onchange="checkService()">
+                    <span>Trans-masculine services</span>
+                </label>
+            </div>
         </div>
-        <div class="btn gender-femme">
-            <label>
-            <input type="radio" id="femme" name="gender" value="femme" onchange="checkService()">
-            <span>Trans-feminine services</span>
-            </label>
-        </div>
-        <div class="btn gender-masc">
-            <label>
-            <input type="radio" id="masc" name="gender" value="masc" onchange="checkService()">
-            <span>Trans-masculine services</span>
-            </label>
-        </div>
-    </div>
     </div>
 
     <div class="service-tags-container">
-    <div class="service-tags">
-        <div class="btn peer-support">
-            <label>
-                <input type="checkbox" onclick="checkService()" id="peer-support" checked>
-                <span>Peer Support</span>
-            </label>
+        <div class="service-tags">
+            <div class="btn peer-support">
+                <label>
+                    <input type="checkbox" onclick="checkService()" id="peer-support" checked>
+                    <span>Peer Support</span>
+                </label>
+            </div>
+            <div class="btn mental-health">
+                <label>
+                    <input type="checkbox" onclick="checkService()" id="mental-health" checked>
+                    <span>Mental Health</span>
+                </label>
+            </div>
+            <div class="btn sexual-health">
+                <label>
+                    <input type="checkbox" onclick="checkService()" id="sexual-health" checked>
+                    <span>Sexual Health</span>
+                </label>
+            </div>
+            <div class="btn hair-removal">
+                <label>
+                    <input type="checkbox" onclick="checkService()" id="hair-removal" checked>
+                    <span>Hair Removal</span>
+                </label>
+            </div>
+            <div class="btn gp-practices">
+                <label>
+                    <input type="checkbox" onclick="checkService()" id="gp-practices" checked>
+                    <span>GP Practices</span>
+                </label>
+            </div>
         </div>
-        <div class="btn mental-health">
-            <label>
-                <input type="checkbox" onclick="checkService()" id="mental-health" checked>
-                <span>Mental Health</span>
-            </label>
-        </div>
-        <div class="btn sexual-health">
-            <label>
-                <input type="checkbox" onclick="checkService()" id="sexual-health" checked>
-                <span>Sexual Health</span>
-            </label>
-        </div>
-        <div class="btn hair-removal">
-            <label>
-                <input type="checkbox" onclick="checkService()" id="hair-removal"checked>
-                <span>Hair Removal</span>
-            </label>
-        </div>
-        <div class="btn gp-practices">
-            <label>
-                <input type="checkbox" onclick="checkService()" id="gp-practices" checked>
-                <span>GP Practices</span>
-            </label>
-        </div>
-    </div>
     </div>
     <div class="map-container" id="map-container"></div>
 

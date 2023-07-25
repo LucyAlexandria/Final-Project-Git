@@ -96,19 +96,19 @@ function addMarkersToContainer(map, latitude, longitude, id, type) {
 
    var markerColour = 'black';
    if (type == 'peer-support') {
-    markerColour = 'red';
+    markerColour = '#f92e42';
    }
    if (type == 'mental-health') {
-    markerColour = 'blue';
+    markerColour = '#1BB8F7';
    }
    if (type == 'sexual-health') {
-    markerColour = 'pink';
+    markerColour = '#F3A4CF';
    }
    if (type == 'hair-removal') {
-    markerColour = 'green';
+    markerColour = '#4f9627';
    }
    if (type == 'gp-practices') {
-    markerColour = 'yellow';
+    markerColour = '#fcf80b';
    }
 
 

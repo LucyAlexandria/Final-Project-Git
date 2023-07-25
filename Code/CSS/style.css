@@ -10,7 +10,7 @@ html {
 
 body {
     background-color: #add8e6;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;   
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     min-height: 100%;
 }
 
@@ -50,7 +50,6 @@ h1 {
     overflow-x: hidden;
     max-width: 0;
     transition: max-width 0.6s ease 0s;
-    /* display: flex; */
     overflow-wrap: anywhere;
     z-index: 3;
 }
@@ -102,31 +101,18 @@ h1 {
     background-color: #85888c;
 }
 
-/* nav {
-    background-color: #303545;
-    border-radius: 0 20px 20px 0; 
-    box-shadow: 5px 5px 10px 0 #85888c;
-    height: calc(100vh - 44px);
-    max-width: 0;
-    overflow: hidden;
-    position: fixed;
-    transition: max-width, 0.8s ease 0s;
-} */
-
 nav {
     background-color: #303545;
-    border-radius: 0 20px 20px 0; 
+    border-radius: 0 20px 20px 0;
     box-shadow: 5px 5px 10px 0 #85888c;
     width: 10rem;
     height: calc(100vh - 44px);
     max-width: 0;
-    overflow-x: hidden;    
+    overflow-x: hidden;
     position: fixed;
     left: 0;
     z-index: 3;
     transition: max-width 0.6s ease 0s;
-    /* display: flex; */
-    /* overflow-wrap: anywhere; */
 }
 
 .menu a {
@@ -166,8 +152,40 @@ nav {
     background: #85888c54;
 }
 
+.title-cross-container {
+    display: grid;
+    grid-template-columns: 1fr 45px;
+}
+
+.xline1,
+.xline2 {
+    margin-top: 1.3rem;
+    width: 30px;
+    height: 3px;
+    background-color: #faf9f6;
+    position: absolute;
+    right: 0.5rem;
+}
+
+.xline1 {
+    transform: rotate(45deg);
+}
+
+.xline2 {
+    transform: rotate(-45deg);
+}
+
+.close-cross {
+    cursor: pointer;
+    float: right;
+    padding: 1rem, 0.5rem;
+}
+
+.close-cross:hover {
+    background-color: #85888c;
+}
+
 .side-menu {
-    /* opacity: 0; */
     display: none;
 }
 
@@ -175,7 +193,7 @@ nav {
     display: none;
 }
 
-.side-menu:focus +.hamburger{
+.side-menu:focus+.hamburger {
     background: #85888c54;
 }
 
@@ -190,8 +208,7 @@ nav {
 
 .gender-tags-container {
     display: grid;
-    padding: 1rem;
-    grid-gap: 1rem;
+    padding: 0.5rem;
     text-align: center;
 }
 
@@ -201,12 +218,8 @@ nav {
 
 .service-tags-container {
     display: grid;
-    grid-gap: 1rem;
-    padding: 2rem;
+    padding: 0.5rem;
     padding-top: 0;
-    padding-left: 3rem;
-    padding-right: 3rem;
-
 }
 
 .service-tags {
@@ -227,20 +240,16 @@ div label input {
     border-radius: 0.5rem;
     border: 0.1rem solid #faf9f6;
     overflow: hidden;
-    /* float: left; */
     display: inline-block;
 }
 
-.btn label{
-  /* float: left; */
-  line-height: 1rem;
-  /* width: 5rem;
-  height: 2rem; */
+.btn label {
+    line-height: 1rem;
 }
 
 .btn label span {
     text-align: center;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     display: block;
 }
 
@@ -250,28 +259,50 @@ div label input {
     color: #faf9f6;
 }
 
-.btn label input + span {
+.btn label input+span {
     color: #faf9f6;
 }
 
-.btn input:checked + span {
+.btn input:checked+span {
     color: #faf9f6;
     text-shadow: 0 0 0.4rem rgba(0, 0, 0, 1);
 }
 
-.peer-support input:checked + span{background-color: #f92e42;}
-.mental-health input:checked + span{background-color: #1BB8F7;}
-.sexual-health input:checked + span{background-color: #F3A4CF;}
-.hair-removal input:checked + span{background-color: #9ee472;}
-.gp-practices input:checked + span{background-color: #b3b04a;}
-.gender-both input:checked + span{background-color: #6b029f}
-.gender-femme input:checked + span{background-color: #F3A4CF;}
-.gender-masc input:checked + span{background-color: #1BB8F7;}
+.peer-support input:checked+span {
+    background-color: #f92e42;
+}
+
+.mental-health input:checked+span {
+    background-color: #1BB8F7;
+}
+
+.sexual-health input:checked+span {
+    background-color: #F3A4CF;
+}
+
+.hair-removal input:checked+span {
+    background-color: #4f9627;
+}
+
+.gp-practices input:checked+span {
+    background-color: #fcf80b;
+}
+
+.gender-both input:checked+span {
+    background-color: #6b029f
+}
+
+.gender-femme input:checked+span {
+    background-color: #F3A4CF;
+}
+
+.gender-masc input:checked+span {
+    background-color: #1BB8F7;
+}
 
 .map-container {
-    bottom: 0;    
+    bottom: 0;
     height: 75vh;
-    /* position: absolute; */
     width: 100vw;
     z-index: 0;
     display: grid;
