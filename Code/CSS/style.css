@@ -307,3 +307,33 @@ div label input {
     z-index: 0;
     display: grid;
 }
+
+.search-results {
+    margin: 2rem;
+    margin-top: 1rem;
+    display: grid;
+}
+
+.search-results a {
+    color:#d84c97;
+    text-shadow: 0.5px 0.5px #36383f;
+    display: grid;
+}
+
+.search-results a:hover {
+    background-color: #91959e;
+}
+
+.search-results > div {
+    margin: 1rem;
+    display: grid;
+}
+
+.search {
+    display: grid;
+    margin: 2rem;
+    text-align: center;
+    grid-template-columns: 0.2fr 4rem;
+    margin-bottom: 0;
+    margin-left: 3rem;
+}

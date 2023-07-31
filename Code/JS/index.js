@@ -175,7 +175,7 @@ servicesContainer.addEventListener('tap', function(event){
         if(data.Item.hasOwnProperty("email")){
           document.getElementById('service-email').innerHTML = "Email: " + data.Item.email.S;
           document.getElementById('service-email').style = "display:block";
-          document.getElementById('service-email-link').href = "mailto: " + data.Item.wiki.S;
+          document.getElementById('service-email-link').href = "mailto: " + data.Item.email.S;
         }
         else {
           document.getElementById('service-email').style = "display:none";

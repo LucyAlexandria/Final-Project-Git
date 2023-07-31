@@ -11,14 +11,14 @@ var dynamoDB = new AWS.DynamoDB();
 
 function searchDB() {
    const searchTerm = document.getElementById("search-bar").value;
-   console.log(searchTerm);
+  //  console.log(searchTerm);
 
    var attributeValues = {};
 
    attributeValues[':serviceName'] = {'S': searchTerm};
    attributeValues[':serviceDescription'] = {'S': searchTerm};
 
-   console.log(attributeValues);
+  //  console.log(attributeValues);
 
    var params = {
     TableName: "trans-services",
@@ -33,13 +33,47 @@ function searchDB() {
         console.log("Error", err);
       }
       else {
-        document.getElementById("search-results").innerHTML = "Search Results: ";
+        const searchResults = document.getElementById("search-results")
+        while (searchResults.firstChild) {
+          searchResults.removeChild(searchResults.firstChild);
+        }
         var table = data.Items;
+        console.log(table);
         let i = 0;
         while (i < table.length) {
-            var newDiv = document.createElement("div");
+            const newDiv = document.createElement("div");
             newDiv.id = table[i].id.S;
-            document.getElementById(table[i].id.S).innerHTML += table[i].name.S;
+            searchResults.appendChild(newDiv);
+            document.getElementById(table[i].id.S).innerHTML += "<h2>" + table[i].name.S + "</h2>";
+            if (table[i].hasOwnProperty("phone")) {
+              newLink = document.createElement("a");
+              newLink.id = "phone-link-" + table[i].id.S;
+              newDiv.appendChild(newLink);
+              document.getElementById("phone-link-"+ table[i].id.S).innerHTML += "Phone No: " + table[i].phone.S + "<br>";
+              document.getElementById("phone-link-" + table[i].id.S).href = "tel: " + table[i].phone.S;
+            }
+            if (table[i].hasOwnProperty("email")) {
+              newLink = document.createElement("a");
+              newLink.id = "email-link-" + table[i].id.S;
+              newDiv.appendChild(newLink);
+              document.getElementById("email-link-" + table[i].id.S).innerHTML += "Email: " + table[i].email.S + "<br>";
+              document.getElementById("email-link-" + table[i].id.S).href = "mailto: " + table[i].email.S;
+            }
+            if (table[i].hasOwnProperty("website")) {
+              newLink = document.createElement("a");
+              newLink.id = "web-link-" + table[i].id.S;
+              newDiv.appendChild(newLink);
+              document.getElementById("web-link-" + table[i].id.S).innerHTML += "Website: " + table[i].website.S + "<br>";
+              document.getElementById("web-link-" + table[i].id.S).href = table[i].website.S;
+            }
+            if (table[i].hasOwnProperty("wiki")) {
+              newLink = document.createElement("a");
+              newLink.id = "wiki-link-" + table[i].id.S;
+              newDiv.appendChild(newLink);
+              document.getElementById("wiki-link-" + table[i].id.S).innerHTML += "Trans Liverpool Wiki: " + table[i].wiki.S + "<br>";
+              document.getElementById("wiki-link-" + table[i].id.S).href = table[i].wiki.S;
+            }
+            document.getElementById(table[i].id.S).innerHTML += table[i].description.S + "<br>";
             i++;
         }
         
