@@ -33,10 +33,13 @@ function searchDB() {
         console.log("Error", err);
       }
       else {
+        document.getElementById("search-results").innerHTML = "Search Results: ";
         var table = data.Items;
         let i = 0;
         while (i < table.length) {
-            document.getElementById("search-results").innerHTML += table[i].name.S;
+            var newDiv = document.createElement("div");
+            newDiv.id = table[i].id.S;
+            document.getElementById(table[i].id.S).innerHTML += table[i].name.S;
             i++;
         }
         
